@@ -1,0 +1,6 @@
+{
+    "require": {
+        "mikehaertl/phpwkhtmltopdf": "~2.0",
+        "kartik-v/mpdf": "@dev"
+    }
+}
