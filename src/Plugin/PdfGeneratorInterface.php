@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\pdf_api\Plugin\PdfGeneratorInterface
+ * Contains \Drupal\pdf_api\Plugin\PdfGeneratorInterface.
  */
 
 namespace Drupal\pdf_api\Plugin;
@@ -37,10 +37,15 @@ interface PdfGeneratorInterface {
   public function getDescription();
 
   /**
+   * Sets the header in the PDF.
+   */
+  public function setHeader();
+
+  /**
    * Set the paper orientation of the generated PDF pages.
    *
    * @param PdfGeneratorInterface::PORTRAIT|PdfGeneratorInterface::LANDSCAPE $orientation
-   *  The orientation of the PDF pages.
+   *   The orientation of the PDF pages.
    */
   public function setPageOrientation($orientation = PdfGeneratorInterface::PORTRAIT);
 
@@ -48,7 +53,7 @@ interface PdfGeneratorInterface {
    * Set the page size of the generated PDF pages.
    *
    * @param string $page_size
-   *  The page size (e.g. A4, B2, Letter).
+   *   The page size (e.g. A4, B2, Letter).
    */
   public function setPageSize($page_size);
 
@@ -56,7 +61,7 @@ interface PdfGeneratorInterface {
    * Add a page to the generated PDF.
    *
    * @param string $html
-   *  The HTML of the page to be added.
+   *   The HTML of the page to be added.
    */
   public function addPage($html);
 
@@ -64,7 +69,7 @@ interface PdfGeneratorInterface {
    * Generate and save the PDF at a specific location.
    *
    * @param string $location
-   *  The location path to save the generated PDF to.
+   *   The location path to save the generated PDF to.
    */
   public function save($location);
 
@@ -72,7 +77,7 @@ interface PdfGeneratorInterface {
    * Send the PDF to the browser has a file download.
    *
    * @param string $filename
-   *  The filename to send the file to the browser with.
+   *   The filename to send the file to the browser with.
    */
   public function send($filename);
 
@@ -80,4 +85,9 @@ interface PdfGeneratorInterface {
    * Stream the PDF to the browser.
    */
   public function stream($html, $filelocation);
+
+  /**
+   * Sets the footer in the PDF.
+   */
+  public function setFooter();
 }
