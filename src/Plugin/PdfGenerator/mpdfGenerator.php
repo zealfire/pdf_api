@@ -47,7 +47,6 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->generator = $generator;
-    //$this->setOptions(array('binary' => 'C://"Program Files"/wkhtmltopdf/bin/wkhtmltopdf.exe'));
   }
 
   /**
@@ -106,6 +105,36 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
     $this->preGenerate();
     $this->generator->WriteHTML($html);
     $this->generator->Output("", "I");
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function stream($html, $filelocation) {
+    $this->preGenerate();
+    // This way you can add css file too.
+    $stylesheet = '.node_view  { display: none; }';
+    $this->generator->WriteHTML($stylesheet, 1);
+    $this->generator->WriteHTML($html, 0);
+    $this->generator->Output($filelocation, 'F');
+  }
+
+  /**
+   * Set global options.
+   *
+   * @param array $options
+   *  The array of options to merge into the currently set options.
+   */
+  protected function setOptions(array $options) {
+    $this->options += $options;
+  }
+
+  /**
+   * Set the global options from the generator plugin into the WKHTMLTOPDF
+   * generator class.
+   */
+  protected function preGenerate() {
+    $this->generator->AddPageByArray($this->options);
   }
 
 }
