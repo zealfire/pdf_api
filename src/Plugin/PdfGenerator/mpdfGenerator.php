@@ -130,7 +130,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
   }
 
   /**
-   * Set the global options from the generator plugin into the WKHTMLTOPDF
+   * Set the global options from the generator plugin into the mPDF
    * generator class.
    */
   protected function preGenerate() {
