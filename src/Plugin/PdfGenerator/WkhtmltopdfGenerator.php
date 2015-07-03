@@ -65,6 +65,13 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
   /**
    * {@inheritdoc}
    */
+  public function setHeader() {
+    $this->setOptions(array('header-right' => "Page [page]")); 
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function setPageOrientation($orientation = PdfGeneratorInterface::PORTRAIT) {
     $this->setOptions(array('orientation' => $orientation));
   }
@@ -83,6 +90,13 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    */
   public function addPage($html) {
     $this->generator->addPage($html);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setFooter() {
+    $this->setOptions(array('footer-center' => "[page]/[topage]"));
   }
 
   /**

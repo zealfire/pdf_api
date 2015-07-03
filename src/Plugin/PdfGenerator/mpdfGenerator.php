@@ -64,6 +64,13 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
   /**
    * {@inheritdoc}
    */
+  public function setHeader() {
+    $this->generator->SetHeader('{PAGENO}'); 
+  }
+  
+  /**
+   * {@inheritdoc}
+   */
   public function addPage($html) {
     echo "hello";
     $this->generator->addPage($html);
@@ -88,6 +95,13 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
     if ($this->isValidPageSize($page_size)) {
       $this->setOptions(array('sheet-size' =>$page_size));
     }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setFooter() {
+    $this->generator->SetFooter('{PAGENO} / {nb}');
   }
 
   /**
