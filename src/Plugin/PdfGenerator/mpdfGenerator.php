@@ -100,6 +100,16 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
   /**
    * {@inheritdoc}
    */
+  public function setPassword($password) {
+    if (isset($password) && $password != NULL) {
+      // Print and Copy is allowed.
+      $this->generator->SetProtection(array('print', 'copy'), $password, $password);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function setFooter() {
     $this->generator->SetFooter('{PAGENO} / {nb}');
   }
