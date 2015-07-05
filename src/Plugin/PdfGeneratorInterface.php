@@ -87,14 +87,6 @@ interface PdfGeneratorInterface {
   public function stream($html, $filelocation);
 
   /**
-  * Sets the password in PDF.
-  *
-  * @param string $password
-  *   The password which will be used in PDF.
-  */
-  public function setPassword($password);
-
-  /**
    * Sets the footer in the PDF.
    */
   public function setFooter();
