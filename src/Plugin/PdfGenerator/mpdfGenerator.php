@@ -98,8 +98,11 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
   }
 
   /**
-   * {@inheritdoc}
-   */
+  * Sets the password in PDF.
+  *
+  * @param string $password
+  *   The password which will be used in PDF.
+  */
   public function setPassword($password) {
     if (isset($password) && $password != NULL) {
       // Print and Copy is allowed.
