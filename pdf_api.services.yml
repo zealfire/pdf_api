@@ -6,3 +6,5 @@ services:
     class: Knp\Snappy\Pdf
   mpdf:
     class: mPDF
+  tcpdf:
+    class: TCPDF
