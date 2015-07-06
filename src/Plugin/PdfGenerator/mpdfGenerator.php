@@ -65,6 +65,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
    * {@inheritdoc}
    */
   public function setHeader() {
+    // @todo Make header content configurable.
     $this->generator->SetHeader('{PAGENO}'); 
   }
   
@@ -72,9 +73,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
    * {@inheritdoc}
    */
   public function addPage($html) {
-    echo "hello";
     $this->generator->addPage($html);
-    echo "world";
   }
 
   /**
@@ -105,6 +104,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
   */
   public function setPassword($password) {
     if (isset($password) && $password != NULL) {
+      // @todo Make permissions configurable.
       // Print and Copy is allowed.
       $this->generator->SetProtection(array('print', 'copy'), $password, $password);
     }
@@ -114,6 +114,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
    * {@inheritdoc}
    */
   public function setFooter() {
+    // @todo Make footer content configurable.
     $this->generator->SetFooter('{PAGENO} / {nb}');
   }
 
@@ -130,6 +131,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
    */
   public function send($html) {
     $this->preGenerate();
+    // @todo Make style sheet configurable.
     $stylesheet = '.node_view  { display: none; }';
     $this->generator->WriteHTML($stylesheet, 1);
     $this->generator->WriteHTML($html, 0);
@@ -142,6 +144,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
   public function stream($html, $filelocation) {
     $this->preGenerate();
     // This way you can add css file too.
+    // @todo Make style sheet configurable.
     $stylesheet = '.node_view  { display: none; }';
     $this->generator->WriteHTML($stylesheet, 1);
     $this->generator->WriteHTML($html, 0);
