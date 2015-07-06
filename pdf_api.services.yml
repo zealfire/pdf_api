@@ -3,7 +3,7 @@ services:
     class: Drupal\pdf_api\PdfGeneratorPluginManager
     arguments: ['@container.namespaces', '@config.factory', '@module_handler']
   wkhtmltopdf:
-    class: Knp\Snappy\Pdf
+    class: mikehaertl\wkhtmlto\Pdf
   mpdf:
     class: mPDF
   tcpdf:
