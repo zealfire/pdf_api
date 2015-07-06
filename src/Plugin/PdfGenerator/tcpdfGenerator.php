@@ -47,6 +47,7 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->generator = $generator;
+    // @todo Make location of the binary configurable.
     //$this->setOptions(array('binary' => 'C://"Program Files"/wkhtmltopdf/bin/wkhtmltopdf.exe'));
   }
 
@@ -66,6 +67,7 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
    * {@inheritdoc}
    */
   public function setHeader() {
+    // @todo Make header content configurable.
     $this->generator->SetPrintHeader();
   }
 
@@ -101,6 +103,7 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
    * {@inheritdoc}
    */
   public function setFooter() {
+    // @todo Make footer content configurable.
     $this->generator->writeHtmlCell("",3,20,4,'<p>Page '.$this->generator->getAliasNumPage().' of  '.' '.$this->generator->getAliasNbPages().'</p>','',1,0,false,'R');
   } 
 
