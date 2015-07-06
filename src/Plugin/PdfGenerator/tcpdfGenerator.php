@@ -101,7 +101,7 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
    * {@inheritdoc}
    */
   public function setFooter() {
-    $this->generator->writeHtmlCell($widhheader,3,20,4,'<p>Page '.$this->generator->getAliasNumPage().' of  '.' '.$this->generator->getAliasNbPages().'</p>','',1,0,false,'R');
+    $this->generator->writeHtmlCell("",3,20,4,'<p>Page '.$this->generator->getAliasNumPage().' of  '.' '.$this->generator->getAliasNbPages().'</p>','',1,0,false,'R');
   } 
 
   /**
