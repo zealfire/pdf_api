@@ -55,8 +55,6 @@ abstract class PdfGeneratorBase extends PluginBase implements PdfGeneratorInterf
    *  TRUE if the page size is valid, FALSE if not.
    */
   protected function isValidPageSize($page_size) {
-    //if(array_key_exists($page_size, $this->pageSizes())
-      //echo "alok1<br>";
     return array_key_exists($page_size, $this->pageSizes());
   }
 
@@ -66,6 +64,8 @@ abstract class PdfGeneratorBase extends PluginBase implements PdfGeneratorInterf
    * @return array
    *  An array of page sizes with the values an array of width and height and
    *  keys the page size name (e.g. A4).
+   * @todo Set width and height. 
+   * @todo What unit of measure to use?
    */
   protected function pageSizes() {
     return array(
