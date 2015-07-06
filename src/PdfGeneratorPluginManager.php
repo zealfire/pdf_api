@@ -16,7 +16,7 @@ use Drupal\Core\Plugin\DefaultPluginManager;
  */
 class PdfGeneratorPluginManager extends DefaultPluginManager {
 
-	/**
+  /**
    * The config factory service.
    *
    * @var \Drupal\Core\Config\ConfigFactory
@@ -35,11 +35,11 @@ class PdfGeneratorPluginManager extends DefaultPluginManager {
    *   The module handler to invoke the alter hook with.
    */
   public function __construct(\Traversable $namespaces, ConfigFactory $config, ModuleHandlerInterface $module_handler) {
-  	$this->config = $config;
+    $this->config = $config;
     parent::__construct('Plugin/PdfGenerator', $namespaces, $module_handler,'Drupal\pdf_api\Plugin\PdfGeneratorInterface', 'Drupal\pdf_api\Annotation\PdfGenerator');
   }
 
-/**
+  /**
    * {@inheritdoc}
    */
   public function createInstance($plugin_id, array $configuration = array()) {
