@@ -128,6 +128,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
    */
   public function send($html) {
     $this->preGenerate();
+    // @todo Try to make it generic.
     $stylesheet = '.node_view  { display: none; }';
     $this->generator->WriteHTML($stylesheet, 1);
     $this->generator->WriteHTML($html, 0);
