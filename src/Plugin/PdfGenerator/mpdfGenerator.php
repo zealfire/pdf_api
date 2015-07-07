@@ -72,9 +72,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
    * {@inheritdoc}
    */
   public function addPage($html) {
-    echo "hello";
     $this->generator->addPage($html);
-    echo "world";
   }
 
   /**
