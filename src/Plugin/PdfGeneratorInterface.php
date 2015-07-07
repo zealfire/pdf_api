@@ -38,6 +38,8 @@ interface PdfGeneratorInterface {
 
   /**
    * Sets the header in the PDF.
+   * 
+   * @todo Needs to find a generic interface for the header.
    */
   public function setHeader();
 
@@ -88,6 +90,8 @@ interface PdfGeneratorInterface {
 
   /**
    * Sets the footer in the PDF.
+   * 
+   * @todo Needs to find a generic interface for the footer.
    */
   public function setFooter();
 }
