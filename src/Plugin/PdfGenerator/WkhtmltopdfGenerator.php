@@ -81,7 +81,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    */
   public function setPageSize($page_size) {
     if ($this->isValidPageSize($page_size)) {
-      $this->setOptions(array('page-size' =>$page_size));
+      $this->setOptions(array('page-size' => $page_size));
     }
   }
 
