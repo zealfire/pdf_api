@@ -47,6 +47,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->generator = $generator;
+    // @todo Make file location configurable.
     $this->setOptions(array('binary' => 'C://"Program Files"/wkhtmltopdf/bin/wkhtmltopdf'));
   }
 
@@ -66,6 +67,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    * {@inheritdoc}
    */
   public function setHeader() {
+    // @todo Make header content variable.
     $this->setOptions(array('header-right' => "Page [page]")); 
   }
 
@@ -81,7 +83,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    */
   public function setPageSize($page_size) {
     if ($this->isValidPageSize($page_size)) {
-      $this->setOptions(array('page-size' =>$page_size));
+      $this->setOptions(array('page-size' => $page_size));
     }
   }
 
@@ -96,6 +98,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    * {@inheritdoc}
    */
   public function setFooter() {
+    // @todo Make header content variable.
     $this->setOptions(array('footer-center' => "[page]/[topage]"));
   }
 
