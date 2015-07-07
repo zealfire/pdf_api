@@ -38,8 +38,11 @@ interface PdfGeneratorInterface {
 
   /**
    * Sets the header in the PDF.
+   *
+   * @param string $text
+   *   The text which need to rendered as header.
    */
-  public function setHeader();
+  public function setHeader($text);
 
   /**
    * Set the paper orientation of the generated PDF pages.
@@ -88,6 +91,9 @@ interface PdfGeneratorInterface {
 
   /**
    * Sets the footer in the PDF.
+   *
+   * @param string $text
+   *   The text which need to rendered as footer.
    */
-  public function setFooter();
+  public function setFooter($text);
 }

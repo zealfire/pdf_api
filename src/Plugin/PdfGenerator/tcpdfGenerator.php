@@ -65,8 +65,8 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
   /**
    * {@inheritdoc}
    */
-  public function setHeader() {
-    $this->generator->SetPrintHeader();
+  public function setHeader($text) {
+    $this->generator->SetPrintHeader($text);
   }
 
   /**
@@ -100,7 +100,7 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
   /**
    * {@inheritdoc}
    */
-  public function setFooter() {
+  public function setFooter($text) {
     $this->generator->writeHtmlCell("",3,20,4,'<p>Page '.$this->generator->getAliasNumPage().' of  '.' '.$this->generator->getAliasNbPages().'</p>','',1,0,false,'R');
   } 
 

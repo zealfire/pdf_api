@@ -64,8 +64,8 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
   /**
    * {@inheritdoc}
    */
-  public function setHeader() {
-    $this->generator->SetHeader('{PAGENO}'); 
+  public function setHeader($text) {
+    $this->generator->SetHeader($text); 
   }
   
   /**
@@ -111,8 +111,8 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
   /**
    * {@inheritdoc}
    */
-  public function setFooter() {
-    $this->generator->SetFooter('{PAGENO} / {nb}');
+  public function setFooter($text) {
+    $this->generator->SetFooter($text);
   }
 
   /**
