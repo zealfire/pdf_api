@@ -23,6 +23,13 @@ interface PdfGeneratorInterface {
   const PORTRAIT = 'portrait';
 
   /**
+   * Returns the administrative id for this generator plugin.
+   *
+   * @return string
+   */
+  public function getId();
+
+  /**
    * Returns the administrative label for this generator plugin.
    *
    * @return string

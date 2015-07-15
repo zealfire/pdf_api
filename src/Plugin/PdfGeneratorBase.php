@@ -19,6 +19,13 @@ abstract class PdfGeneratorBase extends PluginBase implements PdfGeneratorInterf
   /**
    * {@inheritdoc}
    */
+  public function getId() {
+    return $this->pluginDefinition['id'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getLabel() {
     return $this->pluginDefinition['title'];
   }
