@@ -37,6 +37,13 @@ interface PdfGeneratorInterface {
   public function getDescription();
 
   /**
+   * Returns instances of PDF libraries.
+   *
+   * @return object
+   */
+  public function getObject();
+
+  /**
    * Sets the header in the PDF.
    *
    * @param string $text

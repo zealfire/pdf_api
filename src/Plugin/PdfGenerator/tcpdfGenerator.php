@@ -47,7 +47,6 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->generator = $generator;
-    //$this->setOptions(array('binary' => 'C://"Program Files"/wkhtmltopdf/bin/wkhtmltopdf.exe'));
   }
 
   /**
@@ -61,6 +60,13 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
       $container->get('tcpdf')
     );
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getObject() {
+    return $this->generator;
+  } 
   
   /**
    * {@inheritdoc}

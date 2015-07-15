@@ -65,6 +65,13 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
   /**
    * {@inheritdoc}
    */
+  public function getObject() {
+    return $this->generator;
+  } 
+
+  /**
+   * {@inheritdoc}
+   */
   public function setHeader($text) {
     $this->setOptions(array('header-right' => $text)); 
   }

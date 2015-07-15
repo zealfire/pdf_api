@@ -60,6 +60,13 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
       $container->get('mpdf')
     );
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getObject() {
+    return $this->generator;
+  } 
   
   /**
    * {@inheritdoc}
