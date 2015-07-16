@@ -23,7 +23,7 @@ interface PdfGeneratorInterface {
   const PORTRAIT = 'portrait';
 
   /**
-   * Returns the administrative id for this generator plugin.
+   * Set the various options for PDF.
    *
    */
   public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content);
