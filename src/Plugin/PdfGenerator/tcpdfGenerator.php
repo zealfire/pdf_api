@@ -60,6 +60,25 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
       $container->get('tcpdf')
     );
   }
+  
+  /**
+   * {@inheritdoc}
+   */
+  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size) {
+    $this->setPageOrientation($paper_orientation);
+    $this->addPage($pdf_content);
+    $this->setFooter("");
+      if($save_pdf) {
+        $filename = $pdf_location;
+        if(empty($filename)) {
+          $filename = str_replace("/", "_", \Drupal::service('path.current')->getPath());
+          $filename = substr($filename, 1);
+        }
+        $this->stream("", $filename . '.pdf');
+      }
+      else
+        $this->send("");
+  }
 
   /**
    * {@inheritdoc}

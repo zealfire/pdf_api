@@ -61,7 +61,27 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
       $container->get('wkhtmltopdf')
     );
   }
-
+  
+  /**
+   * {@inheritdoc}
+   */
+  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content) {
+    $this->addPage($pdf_content);
+    $this->setPageSize($paper_size);
+    $this->setPageOrientation($paper_orientation);
+    $this->setHeader($header_content);
+    $this->setFooter($footer_content);
+    if($save_pdf){
+      $filename = $pdf_location;
+      if(empty($filename)){
+        $filename = str_replace("/", "_", \Drupal::service('path.current')->getPath());
+        $filename = substr($filename, 1);
+      }
+      $this->stream("", $filename . '.pdf');
+    }
+    else
+      $this->send();
+  }
   /**
    * {@inheritdoc}
    */

@@ -25,6 +25,12 @@ interface PdfGeneratorInterface {
   /**
    * Returns the administrative id for this generator plugin.
    *
+   */
+  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content);
+
+  /**
+   * Returns the administrative id for this generator plugin.
+   *
    * @return string
    */
   public function getId();
