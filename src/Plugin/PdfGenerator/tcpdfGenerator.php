@@ -64,7 +64,7 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
   /**
    * {@inheritdoc}
    */
-  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size) {
+  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content) {
     $this->setPageOrientation($paper_orientation);
     $this->addPage($pdf_content);
     $this->setFooter("");
