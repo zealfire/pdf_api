@@ -2,6 +2,7 @@
     "require": {
         "mikehaertl/phpwkhtmltopdf": "~2.0",
         "kartik-v/mpdf": "@dev",
-        "tecnick.com/tcpdf": "6.0.*"
+        "tecnick.com/tcpdf": "6.0.*",
+         "dompdf/dompdf" : "0.6.*"
     }
 }

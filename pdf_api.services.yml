@@ -8,3 +8,5 @@ services:
     class: mPDF
   tcpdf:
     class: TCPDF
+  dompdf:
+    class: DOMPDF
