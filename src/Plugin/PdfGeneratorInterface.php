@@ -25,6 +25,7 @@ interface PdfGeneratorInterface {
   /**
    * Set the various options for PDF.
    *
+   * @todo Document the parameters here.
    */
   public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content);
 
@@ -54,15 +55,26 @@ interface PdfGeneratorInterface {
    *
    * @return object
    */
+  // @todo Perhaps rename to getGenerator? That's how it is named in the code.
   public function getObject();
 
   /**
    * Sets the header in the PDF.
    *
    * @param string $text
-   *   The text which need to rendered as header.
+   *   The text to rendered as header.
+   * @todo Is HTML allowed in $text? If so, consider renaming to html, or document it.
    */
   public function setHeader($text);
+
+  /**
+   * Sets the footer in the PDF.
+   *
+   * @param string $text
+   *   The text to rendered as footer.
+   * @todo Is HTML allowed in $text? If so, consider renaming to html, or document it.
+   */
+  public function setFooter($text);
 
   /**
    * Set the paper orientation of the generated PDF pages.
@@ -93,27 +105,23 @@ interface PdfGeneratorInterface {
    *
    * @param string $location
    *   The location path to save the generated PDF to.
+   * @todo Absolute path and/or relative to Drupal installation directory,
+   *   accepts a Drupal steam wrapper?
    */
   public function save($location);
 
   /**
-   * Send the PDF to the browser has a file download.
+   * Send the PDF to the browser as a file download.
    *
    * @param string $filename
-   *   The filename to send the file to the browser with.
+   *   The name of the file to be downloaded.
    */
   public function send($filename);
 
   /**
    * Stream the PDF to the browser.
+   *
+   * @todo Document the parameters
    */
   public function stream($html, $filelocation);
-
-  /**
-   * Sets the footer in the PDF.
-   *
-   * @param string $text
-   *   The text which need to rendered as footer.
-   */
-  public function setFooter($text);
 }

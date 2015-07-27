@@ -12,6 +12,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\pdf_api\Annotation\PdfGenerator;
 use Drupal\Core\Annotation\Translation;
 use \DOMPDF;
+use Drupal\pdf_api\Plugin\PdfGeneratorInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 // disable DOMPDF's internal autoloader if you are using Composer
@@ -65,7 +66,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
       $container->get('dompdf')
     );
   }
-  
+
   /**
    * {@inheritdoc}
    */
@@ -77,7 +78,11 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
         $filename = $pdf_location;
         if(empty($filename)) {
           $filename = str_replace("/", "_", \Drupal::service('path.current')->getPath());
+          // @todo Be consistent in the use of single or double quotes. Know
+          //   that single quotes perform slightly better. My advise is to use
+          //   single quotes when possible, and use double when required.
           $filename = substr($filename, 1);
+          // @todo What is removed here? CurrentPathStack::getPath docs say: "Returns the path, without leading slashes."
         }
         $this->stream("", $filename . '.pdf');
       }
@@ -94,13 +99,13 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    */
   public function getObject() {
     return $this->generator;
-  } 
-  
+  }
+
   /**
    * {@inheritdoc}
    */
   public function setHeader($text) {
-    // still to be found out.
+    // @todo still to be found out.
   }
 
   /**
@@ -115,11 +120,11 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    * {@inheritdoc}
    */
   public function setPageOrientation($orientation = PdfGeneratorInterface::PORTRAIT) {
-    if($orientation == 'portrait')
+    if($orientation == PdfGeneratorInterface::PORTRAIT)
       $orientation = 'P';
     else
       $orientation = 'L';
-    $this->generator->set_paper("", $paper_orientation);
+    $this->generator->set_paper("", $orientation);
   }
 
   /**
@@ -127,7 +132,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    */
   public function setPageSize($page_size) {
     if ($this->isValidPageSize($page_size)) {
-    $this->generator->set_paper($paper_size);
+    $this->generator->set_paper($page_size);
     }
   }
 
@@ -135,8 +140,8 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    * {@inheritdoc}
    */
   public function setFooter($text) {
-    // still to be found out.
-  } 
+    // @todo still to be found out.
+  }
 
   /**
    * {@inheritdoc}
@@ -150,6 +155,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    * {@inheritdoc}
    */
   public function send($html) {
+    // @todo Incomplete, $html is not being used.
     $this->generator->Output('htmlout.pdf', 'I');
   }
 
@@ -157,6 +163,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    * {@inheritdoc}
    */
   public function stream($html, $filelocation) {
+    // @todo Incomplete, $html is not being used.
     $this->generator->Output($filelocation, 'D');
   }
 
