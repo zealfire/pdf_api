@@ -60,7 +60,7 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
       $container->get('tcpdf')
     );
   }
-  
+
   /**
    * {@inheritdoc}
    */

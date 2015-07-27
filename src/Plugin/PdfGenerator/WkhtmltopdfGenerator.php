@@ -87,7 +87,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    */
   public function getObject() {
     return $this->generator;
-  } 
+  }
 
   /**
    * {@inheritdoc}
