@@ -72,17 +72,17 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
   public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content) {
     $this->setPageOrientation($paper_orientation);
     $this->addPage($pdf_content);
-    $this->generator->set_paper("", $paper_orientation);
-      if($save_pdf) {
-        $filename = $pdf_location;
-        if(empty($filename)) {
-          $filename = str_replace("/", "_", \Drupal::service('path.current')->getPath());
-          $filename = substr($filename, 1);
-        }
-        $this->stream("", $filename . '.pdf');
+    $this->setHeader($header_content);
+    if($save_pdf) {
+      $filename = $pdf_location;
+      if(empty($filename)) {
+        $filename = str_replace("/", "_", \Drupal::service('path.current')->getPath());
+        $filename = substr($filename, 1);
       }
-      else
-        $this->send("");
+      $this->stream("", $filename . '.pdf');
+    }
+    else
+      $this->send("");
   }
 
   /**
@@ -96,7 +96,8 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    * {@inheritdoc}
    */
   public function setHeader($text) {
-    // still to be found out.
+    $canvas = $this->generator->get_canvas();
+    $canvas->page_text(72, 18, "Header: {PAGE_COUNT}", "", 11, array(0,0,0));
   }
 
   /**
@@ -127,8 +128,9 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    * {@inheritdoc}
    */
   public function setFooter($text) {
-    // still to be found out.
-  } 
+    // @todo see issue over here: https://github.com/dompdf/dompdf/issues/571
+  }
+
 
   /**
    * {@inheritdoc}
