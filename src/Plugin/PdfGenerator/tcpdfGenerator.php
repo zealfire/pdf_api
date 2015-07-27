@@ -60,7 +60,7 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
       $container->get('tcpdf')
     );
   }
-  
+
   /**
    * {@inheritdoc}
    */
@@ -85,8 +85,8 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
    */
   public function getObject() {
     return $this->generator;
-  } 
-  
+  }
+
   /**
    * {@inheritdoc}
    */
@@ -127,7 +127,8 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
    */
   public function setFooter($text) {
     $this->generator->writeHtmlCell("",3,20,4,'<p>Page '.$this->generator->getAliasNumPage().' of  '.' '.$this->generator->getAliasNbPages().'</p>','',1,0,false,'R');
-  } 
+    // @todo Allow translation of this string and/or make it configurable and use tokens for replacement.
+  }
 
   /**
    * {@inheritdoc}

@@ -11,6 +11,7 @@ use Drupal\pdf_api\Plugin\PdfGeneratorBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\pdf_api\Annotation\PdfGenerator;
 use Drupal\Core\Annotation\Translation;
+use Drupal\pdf_api\Plugin\PdfGeneratorInterface;
 use mikehaertl\wkhtmlto\Pdf;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -48,6 +49,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
 
     $this->generator = $generator;
     $this->setOptions(array('binary' => 'C://"Program Files"/wkhtmltopdf/bin/wkhtmltopdf'));
+    // @todo Make binary file location configurable!!
   }
 
   /**
@@ -61,7 +63,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
       $container->get('wkhtmltopdf')
     );
   }
-  
+
   /**
    * {@inheritdoc}
    */
@@ -87,13 +89,14 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    */
   public function getObject() {
     return $this->generator;
-  } 
+  }
 
   /**
    * {@inheritdoc}
    */
   public function setHeader($text) {
-    $this->setOptions(array('header-right' => $text)); 
+    // @todo Make header content/section configurable.
+    $this->setOptions(array('header-right' => $text));
   }
 
   /**
@@ -123,6 +126,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    * {@inheritdoc}
    */
   public function setFooter($text) {
+    // @todo Make footer content/section configurable.
     $this->setOptions(array('footer-center' => $text));
   }
 
@@ -138,6 +142,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    * {@inheritdoc}
    */
   public function send($filename=null) {
+    // @todo This default is not available in the interface. Remove or refactor.
     $this->preGenerate();
     $this->generator->send($filename);
   }
@@ -146,6 +151,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    * {@inheritdoc}
    */
   public function stream($html, $filelocation) {
+    // @todo Incomplete, $html is not being used.
     $this->preGenerate();
     $this->generator->saveAs($filelocation);
   }
