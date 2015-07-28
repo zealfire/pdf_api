@@ -133,7 +133,6 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
    * {@inheritdoc}
    */
   public function save($location) {
-    $this->preGenerate();
     $this->generator->send($location);
   }
 
