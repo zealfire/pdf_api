@@ -90,8 +90,8 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    */
   public function getObject() {
     return $this->generator;
-  } 
-  
+  }
+
   /**
    * {@inheritdoc}
    */
@@ -150,7 +150,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
   /**
    * {@inheritdoc}
    */
-  public function stream($html, $filelocation) {
+  public function stream($filelocation) {
     $this->generator->stream($filelocation);
   }
 

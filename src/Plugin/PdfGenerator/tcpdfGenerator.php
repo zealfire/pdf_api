@@ -147,7 +147,7 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
   /**
    * {@inheritdoc}
    */
-  public function stream($html, $filelocation) {
+  public function stream($filelocation) {
     $this->generator->Output($filelocation, 'D');
   }
 

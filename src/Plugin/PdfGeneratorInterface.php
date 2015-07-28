@@ -107,7 +107,7 @@ interface PdfGeneratorInterface {
   /**
    * Stream the PDF to the browser.
    */
-  public function stream($html, $filelocation);
+  public function stream($filelocation);
 
   /**
    * Sets the footer in the PDF.

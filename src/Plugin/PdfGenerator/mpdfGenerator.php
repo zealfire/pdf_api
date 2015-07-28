@@ -75,7 +75,11 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
         $filename = str_replace("/", "_", \Drupal::service('path.current')->getPath());
         $filename = substr($filename, 1);
       }
-      $this->stream(utf8_encode($pdf_content), $filename.'.pdf');
+    $this->preGenerate();
+    $stylesheet = '.node_view  { display: none; }';
+    $this->generator->WriteHTML($stylesheet, 1);
+    $this->generator->WriteHTML(utf8_encode($pdf_content), 0);
+    $this->stream($filename.'.pdf');
     }
     else
       $this->send(utf8_encode($pdf_content));
@@ -166,12 +170,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
   /**
    * {@inheritdoc}
    */
-  public function stream($html, $filelocation) {
-    $this->preGenerate();
-    // This way you can add css file too.
-    $stylesheet = '.node_view  { display: none; }';
-    $this->generator->WriteHTML($stylesheet, 1);
-    $this->generator->WriteHTML($html, 0);
+  public function stream($filelocation) {
     $this->generator->Output($filelocation, 'F');
   }
 
