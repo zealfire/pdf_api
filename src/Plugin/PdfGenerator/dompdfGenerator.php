@@ -121,7 +121,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    */
   public function setPageSize($page_size) {
     if ($this->isValidPageSize($page_size)) {
-    $this->generator->set_paper($paper_size);
+    $this->generator->set_paper($page_size);
     }
   }
 
@@ -144,7 +144,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
   /**
    * {@inheritdoc}
    */
-  public function send($html) {
+  public function send() {
     $this->generator->stream("sample.pdf",array('Attachment'=>0));
   }
 

@@ -137,9 +137,9 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
   /**
    * {@inheritdoc}
    */
-  public function send($filename=null) {
+  public function send() {
     $this->preGenerate();
-    $this->generator->send($filename);
+    $this->generator->send();
   }
 
   /**

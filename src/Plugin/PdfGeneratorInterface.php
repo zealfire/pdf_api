@@ -99,10 +99,8 @@ interface PdfGeneratorInterface {
   /**
    * Send the PDF to the browser has a file download.
    *
-   * @param string $filename
-   *   The filename to send the file to the browser with.
    */
-  public function send($filename);
+  public function send();
 
   /**
    * Stream the PDF to the browser.
