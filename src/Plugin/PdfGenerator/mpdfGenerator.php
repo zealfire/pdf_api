@@ -11,6 +11,7 @@ use Drupal\pdf_api\Plugin\PdfGeneratorBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\pdf_api\Annotation\PdfGenerator;
 use Drupal\Core\Annotation\Translation;
+use Drupal\pdf_api\Plugin\PdfGeneratorInterface;
 use \mPDF;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -111,7 +112,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
    * {@inheritdoc}
    */
   public function setPageOrientation($orientation = PdfGeneratorInterface::PORTRAIT) {
-    if($orientation == 'portrait')
+    if($orientation == PdfGeneratorInterface::PORTRAIT)
       $orientation = 'P';
     else
       $orientation = 'L';
