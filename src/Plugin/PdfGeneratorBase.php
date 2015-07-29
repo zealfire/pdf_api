@@ -41,10 +41,11 @@ abstract class PdfGeneratorBase extends PluginBase implements PdfGeneratorInterf
    * Get the dimensions of a given page size.
    *
    * @param $page_size
-   *  The page size to get the dimensions for (e.g. A4).
-   * @return array
-   *  An array with the keys width and height that contain the width and height
-   *  dimensions respectively.
+   *   The page size to get the dimensions for (e.g. A4).
+   *
+   * @return array|FALSE
+   *   An array with the keys "width" and "height" that contain the width and
+   *   height dimensions respectively. False if the page size is unknown.
    */
   protected function getPageDimensions($page_size) {
     if ($this->isValidPageSize($page_size)) {
@@ -57,9 +58,10 @@ abstract class PdfGeneratorBase extends PluginBase implements PdfGeneratorInterf
    * Checks if a given page size is valid.
    *
    * @param $page_size
-   *  The page size to check.
+   *   The page size to check.
+   *
    * @return bool
-   *  TRUE if the page size is valid, FALSE if not.
+   *   TRUE if the page size is valid, FALSE if not.
    */
   protected function isValidPageSize($page_size) {
     return array_key_exists($page_size, $this->pageSizes());
@@ -69,10 +71,8 @@ abstract class PdfGeneratorBase extends PluginBase implements PdfGeneratorInterf
    * Get an array of all valid page sizes, keyed by the page size name.
    *
    * @return array
-   *  An array of page sizes with the values an array of width and height and
-   *  keys the page size name (e.g. A4).
-   * @todo Set width and height. 
-   * @todo What unit of measure to use?
+   *   An array of page sizes with the values an array of width and height and
+   *   keys the page size name (e.g. A4).
    */
   protected function pageSizes() {
     return array(

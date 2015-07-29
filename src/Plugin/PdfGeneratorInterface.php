@@ -25,6 +25,20 @@ interface PdfGeneratorInterface {
   /**
    * Set the various options for PDF.
    *
+   * @param string $pdf_content
+   *   The HTML content of PDF.
+   * @param string $pdf_location
+   *   The location where PDF needs to be saved.
+   * @param boolean $save_pdf
+   *   Stores the configuration whether PDF needs to be saved or shown inline.
+   * @param string $paper_orientation
+   *   The orientation of PDF pages (portrait or landscape).
+   * @param string $paper_size
+   *   The size of PDF paper (e.g. A4, B4, Letter).
+   * @param string $footer_content
+   *   The text to be rendered as footer.
+   * @param string $header_content
+   *   The text to be rendered as header.
    */
   public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content);
 
@@ -59,10 +73,10 @@ interface PdfGeneratorInterface {
   /**
    * Sets the header in the PDF.
    *
-   * @param string $text
-   *   The text which need to rendered as header.
+   * @param string $html
+   *   The text to be rendered as header.
    */
-  public function setHeader($text);
+  public function setHeader($html);
 
   /**
    * Set the paper orientation of the generated PDF pages.
@@ -92,13 +106,12 @@ interface PdfGeneratorInterface {
    * Generate and save the PDF at a specific location.
    *
    * @param string $location
-   *   The location path to save the generated PDF to.
+   *   The location (both absolute or relative) path to save the generated PDF to.
    */
   public function save($location);
 
   /**
-   * Send the PDF to the browser has a file download.
-   *
+   * The name of the file to be downloaded.
    */
   public function send();
 
@@ -110,8 +123,8 @@ interface PdfGeneratorInterface {
   /**
    * Sets the footer in the PDF.
    *
-   * @param string $text
-   *   The text which need to rendered as footer.
+   * @param string $html
+   *   The text to be rendered as footer.
    */
-  public function setFooter($text);
+  public function setFooter($html);
 }
