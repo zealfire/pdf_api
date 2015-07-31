@@ -68,7 +68,6 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    *   Path to binary file.
    */
   public function configBinary($path_to_binary) {
-    //$this->setOptions(array('binary' => 'C://"Program Files"/wkhtmltopdf/bin/wkhtmltopdf'));
     $this->setOptions(array('binary' => $path_to_binary));
   }
 
