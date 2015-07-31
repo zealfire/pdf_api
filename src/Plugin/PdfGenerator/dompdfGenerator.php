@@ -69,7 +69,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
   /**
    * {@inheritdoc}
    */
-  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content) {
+  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content, $path_to_binary = '') {
     $this->setPageOrientation($paper_orientation);
     $this->addPage($pdf_content);
     $this->setHeader($header_content);

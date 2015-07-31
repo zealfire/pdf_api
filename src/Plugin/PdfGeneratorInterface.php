@@ -39,8 +39,10 @@ interface PdfGeneratorInterface {
    *   The text to be rendered as footer.
    * @param string $header_content
    *   The text to be rendered as header.
+   * @param string $path_to_binary
+   *   The path to binary file.
    */
-  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content);
+  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content, $path_to_binary = '');
 
   /**
    * Returns the administrative id for this generator plugin.

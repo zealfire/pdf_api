@@ -65,7 +65,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
   /**
    * {@inheritdoc}
    */
-  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content) {
+  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content, $path_to_binary = '') {
     $this->setPageSize($paper_size);
     $this->setPageOrientation($paper_orientation);
     $this->setHeader($header_content);

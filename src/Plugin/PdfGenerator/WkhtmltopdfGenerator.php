@@ -47,7 +47,6 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->generator = $generator;
-    $this->setOptions(array('binary' => 'C://"Program Files"/wkhtmltopdf/bin/wkhtmltopdf'));
   }
 
   /**
@@ -61,11 +60,23 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
       $container->get('wkhtmltopdf')
     );
   }
-  
+
+  /**
+   * Set the path of binary file.
+   *
+   * @param string $path_to_binary
+   *   Path to binary file.
+   */
+  public function configBinary($path_to_binary) {
+    //$this->setOptions(array('binary' => 'C://"Program Files"/wkhtmltopdf/bin/wkhtmltopdf'));
+    $this->setOptions(array('binary' => $path_to_binary));
+  }
+
   /**
    * {@inheritdoc}
    */
-  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content) {
+  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content, $path_to_binary='') {
+    $this->configBinary($path_to_binary);
     $this->addPage($pdf_content);
     $this->setPageSize($paper_size);
     $this->setPageOrientation($paper_orientation);
@@ -82,6 +93,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
     else
       $this->send();
   }
+
   /**
    * {@inheritdoc}
    */
