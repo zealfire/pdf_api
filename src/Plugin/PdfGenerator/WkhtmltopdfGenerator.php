@@ -134,7 +134,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    * {@inheritdoc}
    */
   public function setFooter($text) {
-    $this->setOptions(array('footer-center' => $text));
+    $this->setOptions(array('footer-right' => $text));
   }
 
   /**
