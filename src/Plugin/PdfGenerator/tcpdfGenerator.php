@@ -74,7 +74,7 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
           $filename = str_replace("/", "_", \Drupal::service('path.current')->getPath());
           $filename = substr($filename, 1);
         }
-        $this->stream("", $filename . '.pdf');
+        $this->stream($filename . '.pdf');
       }
       else
         $this->send("");

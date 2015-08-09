@@ -145,7 +145,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
    * {@inheritdoc}
    */
   public function setFooter($text) {
-    $this->generator->SetFooter($text);
+    //$this->generator->SetFooter($text);
   }
 
   /**

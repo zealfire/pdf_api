@@ -80,7 +80,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
         $filename = str_replace('/', '_', \Drupal::service('path.current')->getPath());
         $filename = substr($filename, 1);
       }
-      $this->stream("", $filename . '.pdf');
+      $this->stream($filename);
     }
     else
       $this->send("");
@@ -152,7 +152,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    * {@inheritdoc}
    */
   public function stream($filelocation) {
-    $this->generator->stream($filelocation);
+    $this->generator->Output($filelocation, "F");
   }
 
 }
