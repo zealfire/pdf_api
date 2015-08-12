@@ -76,7 +76,7 @@ class DompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
     if ($save_pdf) {
       $filename = $pdf_location;
       if (empty($filename)) {
-        // If user does not enters default name of PDF then name should be made from its current path.
+        // If no user's choice, PDF name should be made from its current path.
         $filename = str_replace('/', '_', \Drupal::service('path.current')->getPath());
         $filename = substr($filename, 1);
       }

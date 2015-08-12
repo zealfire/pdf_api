@@ -101,7 +101,7 @@ class MpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
   public function setHeader($text) {
     $this->generator->SetHeader($text);
   }
- 
+
   /**
    * {@inheritdoc}
    */
@@ -131,12 +131,12 @@ class MpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
     }
   }
 
- /**
-  * Sets the password in PDF.
-  *
-  * @param string $password
-  *   The password which will be used in PDF.
-  */
+  /**
+   * Sets the password in PDF.
+   *
+   * @param string $password
+   *   The password which will be used in PDF.
+   */
   public function setPassword($password) {
     if (isset($password) && $password != NULL) {
       // Print and Copy is allowed.

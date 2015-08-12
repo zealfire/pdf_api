@@ -107,7 +107,7 @@ class TcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
    * {@inheritdoc}
    */
   public function setPageOrientation($orientation = PdfGeneratorInterface::PORTRAIT) {
-    if($orientation == 'portrait') {
+    if ($orientation == 'portrait') {
       $orientation = 'P';
     }
     else {
