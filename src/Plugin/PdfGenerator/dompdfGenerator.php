@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\pdf_api\Plugin\mpdfGenerator.
+ * Contains \Drupal\pdf_api\Plugin\DompdfGenerator.
  */
 
 namespace Drupal\pdf_api\Plugin\PdfGenerator;
@@ -14,10 +14,10 @@ use Drupal\Core\Annotation\Translation;
 use \DOMPDF;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-// disable DOMPDF's internal autoloader if you are using Composer
-define('DOMPDF_ENABLE_AUTOLOAD', false);
-//include the DOMPDF config file (required)
-require __DIR__."../../../../vendor/dompdf/dompdf/dompdf_config.inc.php";
+// Disable DOMPDF's internal autoloader if you are using Composer.
+define('DOMPDF_ENABLE_AUTOLOAD', FALSE);
+// Include the DOMPDF config file (required).
+require __DIR__ . "../../../../vendor/dompdf/dompdf/dompdf_config.inc.php";
 
 /**
  * A PDF generator plugin for the dompdf library.
@@ -29,7 +29,7 @@ require __DIR__."../../../../vendor/dompdf/dompdf/dompdf_config.inc.php";
  *   description = @Translation("PDF generator using the DOMPDF generator.")
  * )
  */
-class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginInterface {
+class DompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginInterface {
 
   /**
    * The global options for TCPDF.
@@ -65,7 +65,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
       $container->get('dompdf')
     );
   }
-  
+
   /**
    * {@inheritdoc}
    */
@@ -73,17 +73,18 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
     $this->setPageOrientation($paper_orientation);
     $this->addPage($pdf_content);
     $this->setHeader($header_content);
-    if($save_pdf) {
+    if ($save_pdf) {
       $filename = $pdf_location;
-      if(empty($filename)) {
-        // if user does not enters default name of PDF then name should be made from its current path 
+      if (empty($filename)) {
+        // If user does not enters default name of PDF then name should be made from its current path.
         $filename = str_replace('/', '_', \Drupal::service('path.current')->getPath());
         $filename = substr($filename, 1);
       }
       $this->stream($filename);
     }
-    else
+    else {
       $this->send("");
+    }
   }
 
   /**
@@ -98,7 +99,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    */
   public function setHeader($text) {
     $canvas = $this->generator->get_canvas();
-    $canvas->page_text(72, 18, "Header: {PAGE_COUNT}", "", 11, array(0,0,0));
+    $canvas->page_text(72, 18, "Header: {PAGE_COUNT}", "", 11, array(0, 0, 0));
   }
 
   /**
@@ -121,7 +122,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    */
   public function setPageSize($page_size) {
     if ($this->isValidPageSize($page_size)) {
-    $this->generator->set_paper($page_size);
+      $this->generator->set_paper($page_size);
     }
   }
 
@@ -145,7 +146,7 @@ class dompdfGenerator extends PdfGeneratorBase implements ContainerFactoryPlugin
    * {@inheritdoc}
    */
   public function send() {
-    $this->generator->stream("sample.pdf",array('Attachment'=>0));
+    $this->generator->stream("sample.pdf", array('Attachment' => 0));
   }
 
   /**

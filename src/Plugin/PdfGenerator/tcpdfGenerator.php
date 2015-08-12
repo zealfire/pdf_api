@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\pdf_api\Plugin\mpdfGenerator.
+ * Contains \Drupal\pdf_api\Plugin\TcpdfGenerator.
  */
 
 namespace Drupal\pdf_api\Plugin\PdfGenerator;
@@ -24,7 +24,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   description = @Translation("PDF generator using the TCPDF generator.")
  * )
  */
-class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginInterface {
+class TcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginInterface {
 
   /**
    * The global options for TCPDF.
@@ -68,16 +68,17 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
     $this->setPageOrientation($paper_orientation);
     $this->addPage($pdf_content);
     $this->setFooter("");
-      if($save_pdf) {
-        $filename = $pdf_location;
-        if(empty($filename)) {
-          $filename = str_replace("/", "_", \Drupal::service('path.current')->getPath());
-          $filename = substr($filename, 1);
-        }
-        $this->stream($filename . '.pdf');
+    if ($save_pdf) {
+      $filename = $pdf_location;
+      if (empty($filename)) {
+        $filename = str_replace("/", "_", \Drupal::service('path.current')->getPath());
+        $filename = substr($filename, 1);
       }
-      else
-        $this->send("");
+      $this->stream($filename . '.pdf');
+    }
+    else {
+      $this->send("");
+    }
   }
 
   /**
@@ -86,7 +87,7 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
   public function getObject() {
     return $this->generator;
   }
-  
+
   /**
    * {@inheritdoc}
    */
@@ -106,10 +107,12 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
    * {@inheritdoc}
    */
   public function setPageOrientation($orientation = PdfGeneratorInterface::PORTRAIT) {
-    if($orientation == 'portrait')
+    if($orientation == 'portrait') {
       $orientation = 'P';
-    else
+    }
+    else {
       $orientation = 'L';
+    }
     $this->generator->setPageOrientation($orientation);
   }
 
@@ -118,7 +121,7 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
    */
   public function setPageSize($page_size) {
     if ($this->isValidPageSize($page_size)) {
-      $this->generator->AddPage("", $page_size, false, true);
+      $this->generator->AddPage("", $page_size, FALSE, TRUE);
     }
   }
 
@@ -126,8 +129,8 @@ class tcpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginI
    * {@inheritdoc}
    */
   public function setFooter($text) {
-    $this->generator->writeHtmlCell("",3,20,4,'<p>Page '.$this->generator->getAliasNumPage().' of  '.' '.$this->generator->getAliasNbPages().'</p>','',1,0,false,'R');
-  } 
+    $this->generator->writeHtmlCell("", 3, 20, 4, '<p>Page ' . $this->generator->getAliasNumPage() . ' of  ' . ' ' . $this->generator->getAliasNbPages() . '</p>', '', 1, 0, FALSE, 'R');
+  }
 
   /**
    * {@inheritdoc}

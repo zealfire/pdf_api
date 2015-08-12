@@ -74,23 +74,24 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
   /**
    * {@inheritdoc}
    */
-  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content, $path_to_binary='') {
+  public function setter($pdf_content, $pdf_location, $save_pdf, $paper_orientation, $paper_size, $footer_content, $header_content, $path_to_binary = '') {
     $this->configBinary($path_to_binary);
     $this->addPage($pdf_content);
     $this->setPageSize($paper_size);
     $this->setPageOrientation($paper_orientation);
     $this->setHeader($header_content);
     $this->setFooter($footer_content);
-    if($save_pdf){
+    if ($save_pdf) {
       $filename = $pdf_location;
-      if(empty($filename)){
+      if (empty($filename)) {
         $filename = str_replace("/", "_", \Drupal::service('path.current')->getPath());
         $filename = substr($filename, 1);
       }
       $this->stream($filename . '.pdf');
     }
-    else
+    else {
       $this->send();
+    }
   }
 
   /**
@@ -104,7 +105,7 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    * {@inheritdoc}
    */
   public function setHeader($text) {
-    $this->setOptions(array('header-right' => $text)); 
+    $this->setOptions(array('header-right' => $text));
   }
 
   /**
@@ -165,15 +166,14 @@ class WkhtmltopdfGenerator extends PdfGeneratorBase implements ContainerFactoryP
    * Set global options.
    *
    * @param array $options
-   *  The array of options to merge into the currently set options.
+   *   The array of options to merge into the currently set options.
    */
   protected function setOptions(array $options) {
     $this->options += $options;
   }
 
   /**
-   * Set the global options from the generator plugin into the WKHTMLTOPDF
-   * generator class.
+   * Set the global options from plugin into the WKHTMLTOPDF generator class.
    */
   protected function preGenerate() {
     $this->generator->setOptions($this->options);

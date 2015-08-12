@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\pdf_api\Plugin\mpdfGenerator.
+ * Contains \Drupal\pdf_api\Plugin\MpdfGenerator.
  */
 
 namespace Drupal\pdf_api\Plugin\PdfGenerator;
@@ -25,7 +25,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   description = @Translation("PDF generator using the mPDF generator.")
  * )
  */
-class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginInterface {
+class MpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginInterface {
 
   /**
    * The global options for mPDF.
@@ -61,7 +61,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
       $container->get('mpdf')
     );
   }
-  
+
   /**
    * {@inheritdoc}
    */
@@ -75,15 +75,16 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
     $stylesheet = '.node_view  { display: none; }';
     $this->generator->WriteHTML($stylesheet, 1);
     $this->generator->WriteHTML(utf8_encode($pdf_content), 0);
-    if($save_pdf) {
-      if(empty($filename)) {
+    if ($save_pdf) {
+      if (empty($filename)) {
         $filename = str_replace("/", "_", \Drupal::service('path.current')->getPath());
         $filename = substr($filename, 1);
       }
-    $this->stream($filename.'.pdf');
+      $this->stream($filename . '.pdf');
     }
-    else
+    else {
       $this->send(utf8_encode($pdf_content));
+    }
     $this->addPage($pdf_content);
   }
 
@@ -92,15 +93,15 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
    */
   public function getObject() {
     return $this->generator;
-  } 
-  
+  }
+
   /**
    * {@inheritdoc}
    */
   public function setHeader($text) {
     $this->generator->SetHeader($text);
   }
-  
+ 
   /**
    * {@inheritdoc}
    */
@@ -112,10 +113,12 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
    * {@inheritdoc}
    */
   public function setPageOrientation($orientation = PdfGeneratorInterface::PORTRAIT) {
-    if($orientation == PdfGeneratorInterface::PORTRAIT)
+    if ($orientation == PdfGeneratorInterface::PORTRAIT) {
       $orientation = 'P';
-    else
+    }
+    else {
       $orientation = 'L';
+    }
     $this->setOptions(array('orientation' => $orientation));
   }
 
@@ -124,11 +127,11 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
    */
   public function setPageSize($page_size) {
     if ($this->isValidPageSize($page_size)) {
-      $this->setOptions(array('sheet-size' =>$page_size));
+      $this->setOptions(array('sheet-size' => $page_size));
     }
   }
 
-  /**
+ /**
   * Sets the password in PDF.
   *
   * @param string $password
@@ -145,7 +148,7 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
    * {@inheritdoc}
    */
   public function setFooter($text) {
-    //$this->generator->SetFooter($text);
+    // $this->generator->SetFooter($text);
   }
 
   /**
@@ -174,15 +177,14 @@ class mpdfGenerator extends PdfGeneratorBase implements ContainerFactoryPluginIn
    * Set global options.
    *
    * @param array $options
-   *  The array of options to merge into the currently set options.
+   *   The array of options to merge into the currently set options.
    */
   protected function setOptions(array $options) {
     $this->options += $options;
   }
 
   /**
-   * Set the global options from the generator plugin into the mPDF
-   * generator class.
+   * Set the global options from the plugin into the mPDF generator class.
    */
   protected function preGenerate() {
     $this->generator->AddPageByArray($this->options);

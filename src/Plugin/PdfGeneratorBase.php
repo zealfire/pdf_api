@@ -40,7 +40,7 @@ abstract class PdfGeneratorBase extends PluginBase implements PdfGeneratorInterf
   /**
    * Get the dimensions of a given page size.
    *
-   * @param $page_size
+   * @param string $page_size
    *   The page size to get the dimensions for (e.g. A4).
    *
    * @return array|FALSE
@@ -57,7 +57,7 @@ abstract class PdfGeneratorBase extends PluginBase implements PdfGeneratorInterf
   /**
    * Checks if a given page size is valid.
    *
-   * @param $page_size
+   * @param string $page_size
    *   The page size to check.
    *
    * @return bool
@@ -78,124 +78,125 @@ abstract class PdfGeneratorBase extends PluginBase implements PdfGeneratorInterf
     return array(
       'A0' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'A1' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'A2' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'A3' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'A4' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'A5' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'A6' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'A7' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'A8' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'A9' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'B0' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'B1' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'B10' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
-      'B2'=> array(
+      'B2' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'B3' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'B4' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'B5' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'B6' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'B7' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'B8' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'B9' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'C5E' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'Comm10E' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'DLE' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'Executive' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'Folio' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'Ledger' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'Legal' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'Letter' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
       'Tabloid' => array(
         'width' => 0,
-        'height' => 0
+        'height' => 0,
       ),
     );
   }
+
 }
