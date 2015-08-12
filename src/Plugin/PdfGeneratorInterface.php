@@ -29,7 +29,7 @@ interface PdfGeneratorInterface {
    *   The HTML content of PDF.
    * @param string $pdf_location
    *   The location where PDF needs to be saved.
-   * @param boolean $save_pdf
+   * @param bool $save_pdf
    *   Stores the configuration whether PDF needs to be saved or shown inline.
    * @param string $paper_orientation
    *   The orientation of PDF pages (portrait or landscape).
@@ -48,6 +48,7 @@ interface PdfGeneratorInterface {
    * Returns the administrative id for this generator plugin.
    *
    * @return string
+   *   The id of the plugin.
    */
   public function getId();
 
@@ -55,6 +56,7 @@ interface PdfGeneratorInterface {
    * Returns the administrative label for this generator plugin.
    *
    * @return string
+   *   The label of the plugin.
    */
   public function getLabel();
 
@@ -62,6 +64,7 @@ interface PdfGeneratorInterface {
    * Returns the administrative description for this generator plugin.
    *
    * @return string
+   *   The description about the plugin.
    */
   public function getDescription();
 
@@ -69,6 +72,7 @@ interface PdfGeneratorInterface {
    * Returns instances of PDF libraries.
    *
    * @return object
+   *   The object of PDF generating libraries.
    */
   public function getObject();
 
@@ -108,7 +112,7 @@ interface PdfGeneratorInterface {
    * Generate and save the PDF at a specific location.
    *
    * @param string $location
-   *   The location (both absolute or relative) path to save the generated PDF to.
+   *   The location (both absolute/relative) path to save the generated PDF to.
    */
   public function save($location);
 
@@ -129,4 +133,5 @@ interface PdfGeneratorInterface {
    *   The text to be rendered as footer.
    */
   public function setFooter($html);
+
 }

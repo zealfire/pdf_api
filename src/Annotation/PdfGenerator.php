@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\pdf_api\Annotation\PdfGenerator
+ * Contains \Drupal\pdf_api\Annotation\PdfGenerator.
  */
 
 namespace Drupal\pdf_api\Annotation;
